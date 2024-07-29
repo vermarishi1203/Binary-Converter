@@ -12,6 +12,23 @@ console.log(`The binary equivlent of ${inputNum} is: ${convertToBinary(inputNum)
 
 function convertToBinary ( decimalNum ) {
 
+    const decimalNumArray = String(decimalNum).split(".");
+
+    const interger = Number(decimalNumArray[0]);
+
+    const fraction = Number(decimalNumArray[1]);
+
+    const binaryInterger = convertToBinaryInteger(interger);
+
+    const binaryFraction = convertToBinaryFraction(fraction);
+
+    const binaryNum = Number(String(binaryInterger) + "." + String(binaryFraction));
+
+    return binaryNum;
+};
+
+function convertToBinaryInteger ( decimalNum ) {
+
     const remainderArray = [];
 
     let binaryNum = 0;
@@ -30,3 +47,8 @@ function convertToBinary ( decimalNum ) {
 
 };
 
+function convertToBinaryFraction ( decimalNum ) {
+
+    
+
+};
