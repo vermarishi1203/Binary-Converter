@@ -14,17 +14,20 @@ function convertToBinary ( decimalNum ) {
 
     const decimalNumArray = String(decimalNum).split(".");
 
-    const interger = Number(decimalNumArray[0]);
+    const integer = Number(decimalNumArray[0]);
 
-    const fraction = Number(decimalNumArray[1]);
+    const fraction = Number("0." + decimalNumArray[1]);
 
-    const binaryInterger = convertToBinaryInteger(interger);
+    console.log( fraction, typeof(fraction));
+
+    const binaryInteger = convertToBinaryInteger(integer);
 
     const binaryFraction = convertToBinaryFraction(fraction);
 
-    const binaryNum = Number(String(binaryInterger) + "." + String(binaryFraction));
+    const binaryNum = Number(String(binaryInteger) + "." + String(binaryFraction));
 
     return binaryNum;
+    
 };
 
 function convertToBinaryInteger ( decimalNum ) {
