@@ -18,13 +18,11 @@ function convertToBinary ( decimalNum ) {
 
     const fraction = Number("0." + decimalNumArray[1]);
 
-    console.log( fraction, typeof(fraction));
-
     const binaryInteger = convertToBinaryInteger(integer);
 
     const binaryFraction = convertToBinaryFraction(fraction);
 
-    const binaryNum = Number(String(binaryInteger) + "." + String(binaryFraction));
+    const binaryNum = Number(binaryInteger + "." + binaryFraction);
 
     return binaryNum;
     
@@ -34,7 +32,7 @@ function convertToBinaryInteger ( decimalNum ) {
 
     const remainderArray = [];
 
-    let binaryNum = 0;
+    let binaryNum = "";
 
     while ( decimalNum !== 0 ) {
 
@@ -44,7 +42,7 @@ function convertToBinaryInteger ( decimalNum ) {
 
     };
 
-    while ( remainderArray.length !== 0 ) binaryNum = binaryNum * 10 + remainderArray.pop();
+    while ( remainderArray.length !== 0 ) binaryNum = binaryNum + String(remainderArray.pop());
 
     return binaryNum;
 
@@ -52,6 +50,21 @@ function convertToBinaryInteger ( decimalNum ) {
 
 function convertToBinaryFraction ( decimalNum ) {
 
-    
+    const productArray = [];
+
+    let binaryNum = "";
+
+    while ( decimalNum !== 0 && productArray.length !== 6 ) {
+
+        productArray.push(Math.floor(decimalNum * 2));
+
+        decimalNum = decimalNum * 2 - productArray[productArray.length-1];
+        
+    };
+
+    while ( productArray.length !== 0 ) binaryNum = binaryNum + String(productArray.shift());
+
+    return binaryNum;
 
 };
+
