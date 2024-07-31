@@ -8,7 +8,9 @@ const inputNum = prompt("Enter the number: ");
 
 console.log(`You have entered ${inputNum}`);
 
-console.log(`The binary equivlent of ${inputNum} is: ${convertToBinary(inputNum)}`);
+let roundedOffText = "";
+
+console.log(`The binary equivlent of ${inputNum} is: ${convertToBinary(inputNum)} ${roundedOffText}`);
 
 function convertToBinary ( decimalNum ) {
 
@@ -20,16 +22,20 @@ function convertToBinary ( decimalNum ) {
 
     const binaryInteger = convertToBinaryInteger(integer);
 
-    const binaryFraction = convertToBinaryFraction(fraction);
+    const binaryFraction = fraction? convertToBinaryFraction(fraction) : "";  
 
     const binaryNum = Number(binaryInteger + "." + binaryFraction);
 
+    fraction? roundedOffText = `(rounded-off upto 6 bits)`:roundedOffText = "";
+    
     return binaryNum;
     
 };
 
 function convertToBinaryInteger ( decimalNum ) {
 
+    if (decimalNum === 0 || decimalNum === 1) return String(decimalNum);
+    
     const remainderArray = [];
 
     let binaryNum = "";
