@@ -4,7 +4,7 @@ import promptSync from "prompt-sync";
 
 const prompt = promptSync({sigint: true});
 
-const inputNum = prompt("Enter the number: ");
+const inputNum = checkInputValue();
 
 console.log(`You have entered ${inputNum}`);
 
@@ -71,6 +71,22 @@ function convertToBinaryFraction ( decimalNum ) {
     while ( productArray.length !== 0 ) binaryNum = binaryNum + String(productArray.shift());
 
     return binaryNum;
+
+};
+
+function checkInputValue () {
+
+    const inputNum = prompt("Enter the number: ");
+
+    if( inputNum < 0 || isNaN(inputNum) || inputNum == "" ) {
+
+        console.log("Please input a decimal number greater than 0");
+
+        return checkInputValue();
+
+    }
+
+    return inputNum;
 
 };
 
