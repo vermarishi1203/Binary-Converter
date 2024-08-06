@@ -36,21 +36,7 @@ function convertToBinaryInteger ( decimalNum ) {
 
     if (decimalNum === 0 || decimalNum === 1) return String(decimalNum);
     
-    const remainderArray = [];
-
-    let binaryNum = "";
-
-    while ( decimalNum !== 0 ) {
-
-        remainderArray.push(parseInt(decimalNum % 2));
-
-        decimalNum = parseInt(decimalNum / 2);
-
-    };
-
-    while ( remainderArray.length !== 0 ) binaryNum = binaryNum + String(remainderArray.pop());
-
-    return binaryNum;
+    return convertToBinaryInteger( Math.floor( decimalNum / 2 )) + String( decimalNum % 2);
 
 };
 
