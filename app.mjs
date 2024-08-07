@@ -8,9 +8,7 @@ const inputNum = checkInputValue();
 
 console.log(`You have entered ${inputNum}`);
 
-let roundedOffText = "";
-
-console.log(`The binary equivlent of ${inputNum} is: ${convertToBinary(inputNum)} ${roundedOffText}`);
+console.log(`The binary equivlent of ${inputNum} is: ${convertToBinary(inputNum)}`);
 
 function convertToBinary ( decimalNum ) {
 
@@ -25,8 +23,6 @@ function convertToBinary ( decimalNum ) {
     const binaryFraction = fraction? convertToBinaryFraction(fraction) : "";  
 
     const binaryNum = Number(binaryInteger + "." + binaryFraction);
-
-    fraction? roundedOffText = `(rounded-off upto 6 bits)`:roundedOffText = "";
     
     return binaryNum;
     
@@ -42,21 +38,9 @@ function convertToBinaryInteger ( decimalNum ) {
 
 function convertToBinaryFraction ( decimalNum ) {
 
-    const productArray = [];
+    if( decimalNum === 0 ) return String(decimalNum);
 
-    let binaryNum = "";
-
-    while ( decimalNum !== 0 && productArray.length !== 6 ) {
-
-        productArray.push(Math.floor(decimalNum * 2));
-
-        decimalNum = decimalNum * 2 - productArray[productArray.length-1];
-        
-    };
-
-    while ( productArray.length !== 0 ) binaryNum = binaryNum + String(productArray.shift());
-
-    return binaryNum;
+    return String(Math.floor(decimalNum * 2)) + convertToBinaryFraction( decimalNum * 2 - Math.floor(decimalNum * 2));
 
 };
 
@@ -70,7 +54,7 @@ function checkInputValue () {
 
         return checkInputValue();
 
-    }
+    };
 
     return inputNum;
 
